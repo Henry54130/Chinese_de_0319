@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>的 vs 得 大戰</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+    
+    <div id="home-screen" class="screen active">
+        <img src="battle.jpg" alt="遊戲封面圖" class="home-banner">
+        <h1>的 vs 得 大戰</h1>
+        <h3>請選擇您的程度：</h3>
+        <button class="btn-level" onclick="startGame('basic')">初級  <br><small>有拼音 / Pinyin</small></button>
+        <button class="btn-level" onclick="startGame('intermediate')">中級 <br><small>無拼音 / No Pinyin</small></button>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <div id="timer-bar-container"><div id="timer-bar"></div></div>
+        <div id="progress-text">第 1 / 10 題</div>
+        <div id="question-area" class="question-text"></div>
+        <div class="options-container">
+            <button class="option-btn" onclick="checkAnswer('A')">A. 的</button>
+            <button class="option-btn" onclick="checkAnswer('B')">B. 得</button>
+        </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+        <h1>測驗結果</h1>
+        <div class="stats">
+            <p>答對: <span id="correct-count" style="color:var(--success-color); font-weight:bold;">0</span></p>
+            <p>答錯: <span id="wrong-count" style="color:var(--error-color); font-weight:bold;">0</span></p>
+        </div>
+        <button class="btn-level" onclick="location.reload()">重新開始</button>
+    </div>
+</div>
+<script src="question.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
