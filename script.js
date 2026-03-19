@@ -102,15 +102,30 @@ function checkAnswer(userChoice) {
     const correctAns = currentQuestions[currentIndex].a;
     const btns = document.querySelectorAll('.option-btn');
 
+    // 取得音效元素
+    const sfxCorrect = document.getElementById('sound-correct');
+    const sfxWrong = document.getElementById('sound-wrong');
+
     if (userChoice === correctAns) {
         score.correct++;
+        
+        // 播放答對音效
+        sfxCorrect.currentTime = 0; // 重設播放時間，避免連續點擊沒聲音
+        sfxCorrect.play();
+
         if (userChoice === 'A') btns[0].classList.add('correct');
         else btns[1].classList.add('correct');
     } else {
         score.wrong++;
+
+        // 播放答錯音效
+        sfxWrong.currentTime = 0;
+        sfxWrong.play();
+
         if (userChoice === 'A') btns[0].classList.add('wrong');
         else if (userChoice === 'B') btns[1].classList.add('wrong');
-        // Show correct one
+        
+        // 顯示正確答案
         if (correctAns === 'A') btns[0].classList.add('correct');
         else btns[1].classList.add('correct');
     }
@@ -118,7 +133,7 @@ function checkAnswer(userChoice) {
     setTimeout(() => {
         currentIndex++;
         nextQuestion();
-    }, 800); // 0.8s pause to see feedback
+    }, 800); 
 }
 
 function showResult() {
